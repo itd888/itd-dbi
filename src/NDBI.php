@@ -25,6 +25,16 @@ class NDBI
 
     // 事务指令数
     protected $transTimes = 0;
+    public static function getDBI($db_config) {
+        static $_instance = array();
+        $guid = md5(serialize($db_config));
+        if (!isset ($_instance [$guid])) {
+            $obj = new self($db_config);
+            $_instance [$guid] = $obj;
+        }
+        return $_instance [$guid];
+    }
+
 
     public function __construct($db_config)
     {
