@@ -40,7 +40,7 @@ class NDBI
     {
         // echo "NDBI.__construct:".json_encode($db_config);
         $port = $db_config[4] ?? 3306;
-        $this->link = new mysqli($db_config[0], $db_config[1], $db_config[2], $db_config[3], $port);
+        $this->link = new \mysqli($db_config[0], $db_config[1], $db_config[2], $db_config[3], $port);
         $this->link->query("SET time_zone = '-4:00'");
         $this->link->query("SET NAMES UTF8");
     }

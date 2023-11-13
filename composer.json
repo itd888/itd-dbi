@@ -22,5 +22,7 @@
     "require": {
         "php": ">=7.3.3",
         "itd/itd-env": "dev-main"
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
