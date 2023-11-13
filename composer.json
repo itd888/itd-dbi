@@ -1,0 +1,28 @@
+{
+    "name": "itd/itd-dbi",
+    "description": "",
+    "type": "library",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "itd888",
+            "email": "itd888.work@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "itd\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "itd\\tests\\": "tests/"
+        }
+    },
+    "require": {
+        "php": ">=7.3.3",
+        "itd/itd-env": "dev-main"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
