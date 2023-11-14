@@ -82,8 +82,10 @@ class NDBI
             $fields .= "`" . $k . "`,";
             if ('NOW()' == $v) { //TODO 跟DBO
                 $values .= $v . ",";
-            } else
-                $values .= "'" . str_replace("'", "''", $v) . "',";
+            } else{
+                // $values .= "'" . str_replace("'", "''", $v) . "',";
+                $values .= "'" . $this->link->real_escape_string($v) . "',";
+            }
         }
         $action = $replace ? 'REPLACE' : 'INSERT';
         $sql = $action . " INTO " . $table . " (" . trim($fields, ',') . ") VALUES (" . trim($values, ',') . ")";
