@@ -44,6 +44,9 @@ class NDBI
         $port = $db_config[4] ?? 3306;
         try {
             $this->link = new \mysqli($db_config[0], $db_config[1], $db_config[2], $db_config[3], $port);
+            if ($this->link->connect_errno) {
+                print('mysqli connect error:' . $db_config[0] . ' ' . $db_config[1].' '.$db_config[3]);
+            }
             $this->link->query("SET time_zone = '-4:00'");
             $this->link->query("SET NAMES UTF8");
         } catch (\Throwable $e) {
@@ -230,7 +233,7 @@ class NDBI
     // sql错误处理
     private function sql_error()
     {
-        print ('<font color=red>' . mysqli_error($this->link) . '</font><hr><font color=red>' . $this->sql . '</font>');
+        print ('<font color=red>' . $this->link->error. '</font><hr><font color=red>' . $this->sql . '</font>');
     }
 
     // 返回多行,以个字段为key,请确保字段的值唯一
