@@ -13,7 +13,7 @@ if (!defined('IS_WIN')) {
 class NDBI
 {
     /**
-     * @var mysqli php内置类
+     * @var \mysqli php内置类
      */
     private $link;
     private $sql;
@@ -51,7 +51,6 @@ class NDBI
      */
     public function query($sql)
     {
-        self::setLastSql($sql);//设置最后一次执行的sql;
         $this->sql = $sql;
         $result = $this->link->query($sql) or $this->sql_error();
         if ($this->startwith($sql, ['DELETE', 'UPDATE'], false)) {
