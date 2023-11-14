@@ -21,7 +21,8 @@
     },
     "require": {
         "php": ">=7.3.3",
-        "itd/itd-env": "dev-main"
+        "itd/itd-env": "dev-main",
+        "ext-mysqli": "*"
     },
     "minimum-stability": "dev",
     "prefer-stable": true
