@@ -25,7 +25,9 @@ class NDBI
 
     // 事务指令数
     protected $transTimes = 0;
-    public static function getDBI($db_config) {
+
+    public static function getDBI($db_config)
+    {
         static $_instance = array();
         $guid = md5(serialize($db_config));
         if (!isset ($_instance [$guid])) {
@@ -40,9 +42,13 @@ class NDBI
     {
         // echo "NDBI.__construct:".json_encode($db_config);
         $port = $db_config[4] ?? 3306;
-        $this->link = new \mysqli($db_config[0], $db_config[1], $db_config[2], $db_config[3], $port);
-        $this->link->query("SET time_zone = '-4:00'");
-        $this->link->query("SET NAMES UTF8");
+        try {
+            $this->link = new \mysqli($db_config[0], $db_config[1], $db_config[2], $db_config[3], $port);
+            $this->link->query("SET time_zone = '-4:00'");
+            $this->link->query("SET NAMES UTF8");
+        } catch (\Throwable $e) {
+            print('mysqli connect error:' . $e->getCode() . ' ' . $e->getMessage());
+        }
     }
 
     /**
